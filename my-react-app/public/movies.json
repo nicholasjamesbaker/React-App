@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Hard to Kill",
+        "date": "9/2/1990",
+        "actors": ["Steven Seagal", "Kelly LeBrock", "Bill Sadler"],
+        "poster": "images/hard_to_kill.jpg",
+        "rating": 4
+    },
+    {
+        "name": "Marked for Death",
+        "date": "5/10/1990",
+        "actors": ["Steven Seagal", "Joanna Pacula", "Keith David"],
+        "poster": "images/marked_for_death.jpg",
+        "rating": 4.5
+    },
+    {
+        "name": "Above the Law",
+        "date": "8/4/1988",
+        "actors": ["Steven Seagal", "Pam Grier", "Sharon Stone"],
+        "poster": "images/above_the_law.jpg",
+        "rating": 5
+    }
+]
