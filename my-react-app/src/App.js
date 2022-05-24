@@ -3,7 +3,6 @@ import './styles.css';
 import {MoviePage, Home, MovieForm, MovieFormDisplay} from './pages';
 import NavBar from "./NavBar";
 import {Route, Routes} from "react-router-dom";
-"what happened to this repo??? tesetaett"
 
 function App(){
 
@@ -18,7 +17,8 @@ function App(){
   useEffect( () =>{
 
     //load json data
-    fetch("./movies.json")
+    // fetch("./movies.json")
+    fetch("/api/data")
     .then ( response => response.json() )
     .then ( setMovies )
     .then ( console.log(movies))
