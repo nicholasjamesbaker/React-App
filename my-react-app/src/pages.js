@@ -68,7 +68,37 @@ export function MovieForm({addMovie}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     addMovie(movies);
+    
+    //convert data to json, post to back end
+
+    alert(`${movies.name} added to the database!`);
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let data = JSON.stringify({
+    "name": movies.name,
+    "date": movies.date, 
+    "actors": [movies.actors], 
+    "poster": movies.poster, 
+    "rating": movies.rating });
+
+    console.log(data);
+
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: data,
+      redirect: 'follow'
+    };
+
+    fetch("/api/addMovie", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
     setMovies({ name: "", date: "", actors: "" , poster: "", rating: ""});
+
   };
 
   return (

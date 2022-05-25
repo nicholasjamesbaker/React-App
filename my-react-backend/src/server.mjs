@@ -40,7 +40,7 @@ app.get('/api/data', async (req, res) => {
     try{
         await client.connect();
 
-        constdb = client.db('movies')
+        const db = client.db('movies')
 
         const movieInfo = await db.collection('mymovies').find({}).toArray();
 

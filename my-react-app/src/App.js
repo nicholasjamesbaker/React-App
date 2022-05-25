@@ -5,13 +5,14 @@ import NavBar from "./NavBar";
 import {Route, Routes} from "react-router-dom";
 
 function App(){
-
+  // "/addmovie section, adds movies"
   const [movieForm, updateMovieForm] = useState([]);
 
   const addMovie = (movie) => {
     updateMovieForm([...movieForm, movie]);
   };
   
+  // "/movies section, displays movies"
   const [movies, setMovies] = useState(null);
 
   useEffect( () =>{
