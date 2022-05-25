@@ -45,7 +45,30 @@ export function Movie({name, date, actors, poster, rating, onRemove = f => f}) {
     <h3>Release Date: {date}</h3>
     <h3>Starring: {actors.join(', ')} </h3>
     <h3>Rating: {rating} out of 5</h3>
-    <button onClick={() => onRemove(name)}>Remove movie</button>
+    <button onClick={() => {
+      onRemove(name)
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      let data = JSON.stringify({
+        "name": name
+      });
+
+      let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: data,
+        redirect: 'follow'
+      };
+
+      fetch("/api/removeMovie", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+      alert(`${name} has been removed from the database!`);
+
+    } }>Remove movie</button>
     <br></br>
     </>
   )
@@ -138,15 +161,16 @@ export function MovieForm({addMovie}) {
             required
           />
         </div>
-          <select 
+        <div>
+          <input 
+          type="file"
           name="poster"
           value={movies.poster}
-          onChange={handleChange}>
-            <option value="images/poster_placeholder.png">Placeholder Image</option>
-            <option value="images/thumbs_up.png">Thumbs Up</option>
-            <option value="images/thumbs_down.png">Thumbs Down</option>
-          </select>
-          <div>
+          onChange={handleChange}
+          required
+          />
+        </div>
+        <div>
           <input
             type="text"
             name="rating"

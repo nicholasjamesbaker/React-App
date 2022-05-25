@@ -36,6 +36,24 @@ app.post('/api/addMovie', async (req, res) => {
     }
 })
 
+app.post('/api/removeMovie', async (req, res) => {
+    try {
+        
+        await client.connect();
+
+        const db = client.db('movies');
+        
+        const movieInfo = await db.collection('mymovies').deleteOne(req.body);
+
+        res.sendStatus(200);
+
+        client.close();
+    } 
+    catch (error){
+        res.status(500)
+    }
+})
+
 app.get('/api/data', async (req, res) => {
     try{
         await client.connect();
