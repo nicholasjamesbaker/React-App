@@ -49,6 +49,7 @@ export function Movie({name, date, actors, poster, rating, onRemove = f => f}) {
       onRemove(name)
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
+      
 
       let data = JSON.stringify({
         "name": name
